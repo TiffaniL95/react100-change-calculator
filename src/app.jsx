@@ -11,13 +11,10 @@ class App extends Component {
     this.handleChange = this.handleChange.bind(this);
   };
 
-  handleChange(){
-    let newAmountDue = Number(document.getElementById("amount-due").value)
-    let newAmountReceived = Number(document.getElementById("amount-received").value)
+  handleChange(e){
     this.setState({
-      amountDue: newAmountDue,
-      amountReceived: newAmountReceived
-   })
+      [e.target.name] : Number(e.target.value)
+    })
   };
 
   calculateChange(){
@@ -38,7 +35,7 @@ class App extends Component {
 
       this.setState({
         total: change
-     })
+      })
 
     currency.map(curr=>{
       change = Math.abs(change)
