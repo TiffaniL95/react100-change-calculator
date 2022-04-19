@@ -7,10 +7,11 @@ class App extends Component {
       amountDue: 0,
       amountReceived: 0,
       total: 0
-    }
+    };
+    this.handleChange = this.handleChange.bind(this);
   };
 
-  handleChange(e){
+  handleChange(){
     let newAmountDue = Number(document.getElementById("amount-due").value)
     let newAmountReceived = Number(document.getElementById("amount-received").value)
     this.setState({
@@ -62,9 +63,9 @@ class App extends Component {
               <div className="card-header">Enter Information</div>
               <div className="card-body d-flex flex-column">
                 <label className="fw-bold" htmlFor="amount-due">How much is due?</label>
-                <input className="my-2" type="number" name="amountDue" id="amount-due" defaultValue={this.state.amountDue} onChange={e => this.handleChange(e)}></input>
+                <input className="my-2" type="number" name="amountDue" id="amount-due" defaultValue={this.state.amountDue} onChange={this.handleChange}></input>
                 <label className="fw-bold" htmlFor="amount-received">How much was received?</label>
-                <input className="my-2" type="number" name="amountReceived" id="amount-received" defaultValue={this.state.amountReceived} onChange={e => this.handleChange(e)}></input>
+                <input className="my-2" type="number" name="amountReceived" id="amount-received" defaultValue={this.state.amountReceived} onChange={this.handleChange}></input>
               </div>
               <div className="card-footer">
                 <button className="btn btn-primary w-100" onClick={() => this.calculateChange(Math.abs(this.state.total))}>Calculate</button>
